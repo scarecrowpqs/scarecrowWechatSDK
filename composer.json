@@ -1,0 +1,14 @@
+{
+  "name": "ScarecrowWechatpay/ScarecrowWechatpay",
+  "description": "去库的支付宝SDK",
+  "authors": [
+    {
+      "name": "scarecrow"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "ScarecrowWechatpay\\": "src/"
+    }
+  }
+}

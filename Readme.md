@@ -1,3 +1,1 @@
-#在composer.json中配置自动加载
-##引入composer的自动加载文件
-#然后就可以使用了
+封装了wechat的扫码支付、H5支付、退款、查询功能等 使用看test/index.php

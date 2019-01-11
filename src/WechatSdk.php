@@ -193,4 +193,9 @@ class WechatSdk{
 		$tool = new WechatTradeService($this->config);
 		return $tool->check($arr);
 	}
+
+	public function author()
+	{
+		echo "Scarecrow";
+	}
 }

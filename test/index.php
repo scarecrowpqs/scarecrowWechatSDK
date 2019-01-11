@@ -1,6 +1,4 @@
 <?php
-include_once 'vendor/autoload.php';
-//配置可以在接口类初始化时传入也可以在src/config.php中配置
 $wechatPay = new \ScarecrowWechatpay\WechatSdk();
 //H5支付
 $wechatPay->WapPay('订单名称','123456789','10');

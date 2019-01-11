@@ -1,14 +1,23 @@
 {
-  "name": "ScarecrowWechatpay/ScarecrowWechatpay",
-  "description": "去库的支付宝SDK",
+  "name": "scarecrow/scarecrow-wechat-sdk",
+  "type": "library",
+  "description": "Wechat Pay SDK.",
+  "keywords": ["pay"],
+  "homepage": "https://github.com/scarecrowpqs",
+  "license": "MIT",
   "authors": [
-    {
-      "name": "scarecrow"
-    }
+      {
+          "name": "Scarecrow",
+          "email": "1366635163@qq.com",
+          "homepage": "https://github.com/scarecrowpqs"
+      }
   ],
+  "require": {
+      "php": ">=5.6.0"
+  },
   "autoload": {
-    "psr-4": {
-      "ScarecrowWechatpay\\": "src/"
-    }
+      "psr-4": {
+        "ScarecrowWechatpay\\": "src/"
+      }
   }
 }

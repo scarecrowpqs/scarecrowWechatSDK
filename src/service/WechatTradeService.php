@@ -33,13 +33,13 @@ class WechatTradeService {
 	private $redirect_url;
 
 	public function __construct($wechat_config){
-		$this->gateway_url = $wechat_config['gatewayUrl'] ?? $this->gateway_url;
-		$this->signType=$wechat_config['sign_type'] ?? $this->signType;
+		$this->gateway_url = isset($wechat_config['gatewayUrl']) ? $wechat_config['gatewayUrl'] : $this->gateway_url;
+		$this->signType=isset($wechat_config['sign_type']) ? $wechat_config['sign_type'] : $this->signType;
 		$this->appid = $wechat_config['app_id'];
 		$this->mch_id = $wechat_config['mch_id'];
 		$this->private_key = $wechat_config['private_key'];
 		$this->debug = is_bool($wechat_config['is_debug']) ? $wechat_config['is_debug'] : false;
-		$this->redirect_url = $wechat_config['redirect_url'] ?? "";
+		$this->redirect_url = isset($wechat_config['redirect_url']) ? $wechat_config['redirect_url'] : "";
 		if(empty($this->appid)||trim($this->appid)==""){
 			throw new \Exception("appid should not be NULL!");
 		}

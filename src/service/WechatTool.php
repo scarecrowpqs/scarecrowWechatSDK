@@ -79,7 +79,7 @@ class WechatTool{
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
 		if ($isSsl) {
-			curl_setopt($ch,CURLOPT_SSL_VERIFYPEER,1);//证书检查
+//			curl_setopt($ch,CURLOPT_SSL_VERIFYPEER,1);//证书检查
 			curl_setopt($ch,CURLOPT_SSLCERTTYPE,'pem');
 			curl_setopt($ch,CURLOPT_SSLCERT,dirname(__FILE__).'/../cert/apiclient_cert.pem');
 			curl_setopt($ch,CURLOPT_SSLCERTTYPE,'pem');
@@ -87,7 +87,7 @@ class WechatTool{
 			curl_setopt($ch,CURLOPT_SSLCERTTYPE,'pem');
 			curl_setopt($ch,CURLOPT_CAINFO,dirname(__FILE__).'/../cert/cacert.pem');
 		} else {
-			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+//			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 			curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
 		}
 
@@ -145,7 +145,7 @@ class WechatTool{
 		//生成请求地址
 		$requestUrl = $this->gateway_url . $request->getApiMethodName();
 		//是否进行证书验证
-		$isSSL = @$request->getIsSSLCheck() ?? false;
+		$isSSL = (boolean)@$request->getIsSSLCheck();
 		//发起HTTP POST请求
 		try {
 			$sendData = $this->arrayToXml($sysParams);

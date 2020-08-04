@@ -9,7 +9,7 @@ class WechatpayBaseRequest{
 	/**
 	 * @return bool
 	 */
-	public function getIsSSLCheck(): bool
+	public function getIsSSLCheck()
 	{
 		return $this->isSSLCheck;
 	}
@@ -17,7 +17,7 @@ class WechatpayBaseRequest{
 	/**
 	 * @param bool $isSSLCheck
 	 */
-	public function setIsSSLCheck(bool $isSSLCheck)
+	public function setIsSSLCheck($isSSLCheck)
 	{
 		$this->isSSLCheck = $isSSLCheck;
 	}

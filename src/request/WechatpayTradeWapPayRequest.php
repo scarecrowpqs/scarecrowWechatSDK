@@ -67,10 +67,10 @@ class WechatpayTradeWapPayRequest extends WechatpayBaseRequest
 	public function getBizContent()
 	{
 		$times = time();
-		$this->apiParams['nonce_str'] = $this->bizContent['nonce_str'] ?? $this->apiParams['nonce_str'] ?? $this->createNonceStr();
-		$this->apiParams['spbill_create_ip'] = $this->bizContent['spbill_create_ip'] ?? $this->apiParams['spbill_create_ip'] ?? $this->getClientIp();
-		$this->apiParams['time_start'] = $this->bizContent['time_start'] ?? $this->apiParams['time_start'] ?? date("YmdHis", $times);
-		$this->apiParams['time_expire'] = $this->bizContent['time_expire'] ?? $this->apiParams['time_expire'] ?? date("YmdHis", $times+(60 * 60 * 2));
+        $this->apiParams['nonce_str'] = isset($this->bizContent['nonce_str']) ? $this->bizContent['nonce_str'] : (isset($this->apiParams['nonce_str']) ? $this->apiParams['nonce_str'] : $this->createNonceStr());
+        $this->apiParams['spbill_create_ip'] = isset($this->bizContent['spbill_create_ip']) ? $this->bizContent['spbill_create_ip'] : (isset($this->apiParams['spbill_create_ip']) ? $this->apiParams['spbill_create_ip'] : $this->getClientIp());
+        $this->apiParams['time_start'] = isset($this->bizContent['time_start']) ? $this->bizContent['time_start'] : (isset($this->apiParams['time_start']) ? $this->apiParams['time_start'] : date("YmdHis", $times));
+        $this->apiParams['time_expire'] = isset($this->bizContent['time_expire']) ? $this->bizContent['time_expire'] : (isset($this->apiParams['time_expire']) ? $this->apiParams['time_expire'] : date("YmdHis", $times+(60 * 60 * 2)));
 		return $this->filterEmptyValue(array_merge($this->apiParams, $this->bizContent));
 	}
 
@@ -171,7 +171,7 @@ class WechatpayTradeWapPayRequest extends WechatpayBaseRequest
 	/**
 	 * @return string
 	 */
-	public function getFeeType(): string
+	public function getFeeType()
 	{
 		return $this->fee_type;
 	}

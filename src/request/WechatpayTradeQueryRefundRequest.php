@@ -31,7 +31,7 @@ class WechatpayTradeQueryRefundRequest extends WechatpayBaseRequest
 	/**
 	 * @return array
 	 */
-	public function getApiParams() : array
+	public function getApiParams()
 	{
 		return $this->apiParams;
 	}
@@ -41,7 +41,7 @@ class WechatpayTradeQueryRefundRequest extends WechatpayBaseRequest
 	 */
 	public function getBizContent()
 	{
-		$this->apiParams['nonce_str'] = $this->bizContent['nonce_str'] ?? $this->apiParams['nonce_str'] ?? $this->createNonceStr();
+        $this->apiParams['nonce_str'] = isset($this->bizContent['nonce_str']) ? $this->bizContent['nonce_str'] : (isset($this->apiParams['nonce_str']) ? $this->apiParams['nonce_str'] : $this->createNonceStr());
 		return $this->filterEmptyValue(array_merge($this->apiParams, $this->bizContent));
 	}
 

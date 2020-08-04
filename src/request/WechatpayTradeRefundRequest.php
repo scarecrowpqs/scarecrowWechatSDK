@@ -35,7 +35,7 @@ class WechatpayTradeRefundRequest extends WechatpayBaseRequest
 	/**
 	 * @return array
 	 */
-	public function getApiParams() : array
+	public function getApiParams()
 	{
 		return $this->apiParams;
 	}
@@ -47,7 +47,7 @@ class WechatpayTradeRefundRequest extends WechatpayBaseRequest
 	{
 		//开启证书验证 (不需要验证的接口不需要设置，默认为不开启)
 		$this->setIsSSLCheck(true);
-		$this->apiParams['nonce_str'] = $this->bizContent['nonce_str'] ?? $this->apiParams['nonce_str'] ?? $this->createNonceStr();
+        $this->apiParams['nonce_str'] = isset($this->bizContent['nonce_str']) ? $this->bizContent['nonce_str'] : (isset($this->apiParams['nonce_str']) ? $this->apiParams['nonce_str'] : $this->createNonceStr());
 		return $this->filterEmptyValue(array_merge($this->apiParams, $this->bizContent));
 	}
 

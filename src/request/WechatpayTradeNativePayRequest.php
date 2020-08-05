@@ -77,7 +77,7 @@ class WechatpayTradeNativePayRequest extends WechatpayBaseRequest
 	/**
 	 * @param mixed $bizContent
 	 */
-	public function setBizContent(array $bizContent)
+	public function setBizContent($bizContent)
 	{
 		$this->bizContent = array_merge($this->bizContent, $bizContent);
 	}
@@ -179,7 +179,7 @@ class WechatpayTradeNativePayRequest extends WechatpayBaseRequest
 	/**
 	 * @param string $fee_type
 	 */
-	public function setFeeType(string $fee_type)
+	public function setFeeType($fee_type)
 	{
 		$this->fee_type = $fee_type;
 		$this->apiParams['fee_type'] = $this->fee_type;

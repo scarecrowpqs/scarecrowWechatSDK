@@ -190,7 +190,7 @@ class WechatpayTradeNativePayContentBuilder{
 	/**
 	 * @return string
 	 */
-	public function getTradeType(): string
+	public function getTradeType()
 	{
 		return $this->trade_type;
 	}
@@ -198,7 +198,7 @@ class WechatpayTradeNativePayContentBuilder{
 	/**
 	 * @param string $trade_type
 	 */
-	public function setTradeType(string $trade_type)
+	public function setTradeType($trade_type)
 	{
 		$this->trade_type = $trade_type;
 		$this->bizContent['trade_type'] = $this->trade_type;

@@ -40,7 +40,7 @@ class WechatpayTradeShortUrlRequest extends WechatpayBaseRequest
 	/**
 	 * @param mixed $bizContent
 	 */
-	public function setBizContent(array $bizContent)
+	public function setBizContent($bizContent)
 	{
 		$this->bizContent = array_merge($this->bizContent, $bizContent);
 	}

@@ -39,7 +39,7 @@ class WechatpayTradeWapPayContentBuilder{
 	/**
 	 * @return array
 	 */
-	public function getParams(): array
+	public function getParams()
 	{
 		return $this->params;
 	}
@@ -47,7 +47,7 @@ class WechatpayTradeWapPayContentBuilder{
 	/**
 	 * @param array $pramas
 	 */
-	public function setParams(array $params)
+	public function setParams($params)
 	{
 		$this->params = $params;
 	}
@@ -193,7 +193,7 @@ class WechatpayTradeWapPayContentBuilder{
 	/**
 	 * @return string
 	 */
-	public function getTradeType(): string
+	public function getTradeType()
 	{
 		return $this->trade_type;
 	}
@@ -201,7 +201,7 @@ class WechatpayTradeWapPayContentBuilder{
 	/**
 	 * @param string $trade_type
 	 */
-	public function setTradeType(string $trade_type)
+	public function setTradeType($trade_type)
 	{
 		$this->trade_type = $trade_type;
 		$this->bizContent['trade_type'] = $this->trade_type;

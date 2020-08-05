@@ -26,6 +26,11 @@ class WechatTool{
 
 	public $encryptType = "AES";
 
+	//证书地址目录
+    public $certDir = '';
+    //日志文件地址
+    public $logFileDir = '';
+
 	//V 获取签名
 	public function generateSign($params, $signType = "MD5") {
 		return $this->sign($this->getSignContent($params), $signType);
@@ -81,11 +86,11 @@ class WechatTool{
 		if ($isSsl) {
 //			curl_setopt($ch,CURLOPT_SSL_VERIFYPEER,1);//证书检查
 			curl_setopt($ch,CURLOPT_SSLCERTTYPE,'pem');
-			curl_setopt($ch,CURLOPT_SSLCERT,dirname(__FILE__).'/../cert/apiclient_cert.pem');
+			curl_setopt($ch,CURLOPT_SSLCERT,$this->certDir . '/apiclient_cert.pem');
 			curl_setopt($ch,CURLOPT_SSLCERTTYPE,'pem');
-			curl_setopt($ch,CURLOPT_SSLKEY,dirname(__FILE__).'/../cert/apiclient_key.pem');
+			curl_setopt($ch,CURLOPT_SSLKEY,$this->certDir . '/apiclient_key.pem');
 			curl_setopt($ch,CURLOPT_SSLCERTTYPE,'pem');
-			curl_setopt($ch,CURLOPT_CAINFO,dirname(__FILE__).'/../cert/cacert.pem');
+			curl_setopt($ch,CURLOPT_CAINFO,$this->certDir . '/cacert.pem');
 		} else {
 //			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 			curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
@@ -108,7 +113,7 @@ class WechatTool{
 	//记录错误日志
 	protected function logCommunicationError($apiName, $requestUrl, $errorCode, $responseTxt) {
 		$localIp = isset ($_SERVER["SERVER_ADDR"]) ? $_SERVER["SERVER_ADDR"] : "CLI";
-		$logger["log_file"] = rtrim(AOP_SDK_WORK_DIR, '\\/') . '/' . "logs/aop_comm_err_" . $this->appId . "_" . date("Y-m-d") . ".log";
+		$logger["log_file"] = rtrim($this->logFileDir, '\\/') . '/' . "logs/aop_comm_err_" . $this->appId . "_" . date("Y-m-d") . ".log";
 		$logger["separator"] = "^_^";
 		$logData = array(
 			date("Y-m-d H:i:s"),

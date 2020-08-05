@@ -32,6 +32,12 @@ class WechatTradeService {
 	//同步回调地址
 	private $redirect_url;
 
+
+    //证书地址目录
+    public $certDir = '';
+    //日志文件地址
+    public $logFileDir = '';
+
 	public function __construct($wechat_config){
 		$this->gateway_url = isset($wechat_config['gatewayUrl']) ? $wechat_config['gatewayUrl'] : $this->gateway_url;
 		$this->signType=isset($wechat_config['sign_type']) ? $wechat_config['sign_type'] : $this->signType;
@@ -40,6 +46,8 @@ class WechatTradeService {
 		$this->private_key = $wechat_config['private_key'];
 		$this->debug = is_bool($wechat_config['is_debug']) ? $wechat_config['is_debug'] : false;
 		$this->redirect_url = isset($wechat_config['redirect_url']) ? $wechat_config['redirect_url'] : "";
+		$this->certDir = isset($wechat_config['certDir']) ? $wechat_config['certDir'] : "";
+		$this->logFileDir = isset($wechat_config['logFileDir']) ? $wechat_config['logFileDir'] : "";
 		if(empty($this->appid)||trim($this->appid)==""){
 			throw new \Exception("appid should not be NULL!");
 		}
@@ -67,6 +75,8 @@ class WechatTradeService {
 		$tool->gateway_url = $this->gateway_url;
 		$tool->mch_id = $this->mch_id;
 		$tool->debugInfo = $this->debug;
+		$tool->certDir = $this->certDir;
+		$tool->logFileDir = $this->logFileDir;
 		$result = $tool->execute($request);
 		return $result;
 	}
@@ -193,7 +203,7 @@ class WechatTradeService {
 	
 	//请确保项目文件有可写权限，不然打印不了日志。
 	function writeLog($text) {
-		file_put_contents ( dirname ( __FILE__ ).DIRECTORY_SEPARATOR."./../../log.txt", date ( "Y-m-d H:i:s" ) . "  " . $text . "\r\n", FILE_APPEND );
+		file_put_contents ( $this->logFileDir . "/log_wechat.txt", date ( "Y-m-d H:i:s" ) . "  " . $text . "\r\n", FILE_APPEND );
 	}
 
 	/**
